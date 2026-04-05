@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { experienceData } from '../data/experience'
-import { div, li } from 'framer-motion/client'
 import { FiChevronDown } from "react-icons/fi";
 
 const Experience = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     return (
         <section id="experience" className="min-h-screen py-24 px-6 text-white">
-            <h2 className="text-2xl md:text-4xl font-bold mb-10 text-center">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                 {experienceData.heading}
             </h2>
+            <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+                {experienceData.subtitle}
+            </p>
 
             <div className="max-w-xl md:max-w-4xl mx-auto relative">
                 <div className="absolute left-4 top-0 h-full w-[2px] bg-white/20"></div>

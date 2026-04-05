@@ -6,9 +6,12 @@ import { FaArrowUpRightFromSquare } from 'react-icons/fa6'
 const Works = () => {
   return (
     <section id="works" className="min-h-screen py-24 px-6 text-white">   
-        <h2 className="text-2xl md:text-4xl font-bold mb-10 text-center">
+        <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
             {worksData.heading}
         </h2>
+        <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+            {worksData.subtitle}
+        </p>
         <div className="max-w-xl md:max-w-4xl mx-auto relative">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {worksData.projects.map((project) => (

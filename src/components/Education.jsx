@@ -4,9 +4,12 @@ import { educationData } from '../data/education'
 const Education = () => {
   return (
     <section id="education" className="min-h-screen py-24 px-6 text-white">
-      <h2 className="text-2xl md:text-4xl font-bold mb-10 text-center">
+      <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
         {educationData.heading}
       </h2>
+      <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+        {educationData.subtitle}
+      </p>
 
       <div className="max-w-xl md:max-w-4xl mx-auto relative">
         {/* Vertical Line */}

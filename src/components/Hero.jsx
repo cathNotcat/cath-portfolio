@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa"
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center text-center text-white">
+    <section id="about" className="min-h-screen flex items-center justify-center text-center text-white">
         <div className="max-w-[75%]">
             <h2 className="text-xl md:text-2xl mb-2">
               {heroData.greetings}
