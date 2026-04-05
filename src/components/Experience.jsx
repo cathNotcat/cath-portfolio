@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { experienceData } from '../data/experience'
-import { div } from 'framer-motion/client'
+import { div, li } from 'framer-motion/client'
 import { FiChevronDown } from "react-icons/fi";
 
 const Experience = () => {
@@ -44,24 +44,37 @@ const Experience = () => {
 
                                 {/* EXPANDABLE CONTENT */}
                                 <div
-                                className={`transition-all duration-300 overflow-hidden ${
-                                    isOpen ? "max-h-40 mt-4 opacity-100" : "max-h-0 opacity-0"
-                                }`}
-                                >
-                                <p className="text-sm text-gray-300 leading-relaxed">
-                                    {item.description.short}
-                                </p>
-
-                                <div className="flex gap-2 mt-3 flex-wrap">
-                                    {item.tech?.map((tech, i) => (
-                                    <span
-                                        key={i}
-                                        className="text-xs px-2 py-1 bg-white/10 rounded-md border border-white/20"
+                                    className={`grid transition-all duration-300 ${
+                                        isOpen ? "grid-rows-[1fr] mt-4 opacity-100" : "grid-rows-[0fr] opacity-0"
+                                    }`}
                                     >
-                                        {tech}
-                                    </span>
-                                    ))}
-                                </div>
+                                    <div className="overflow-hidden">
+                                        <p className="text-sm text-gray-300 leading-relaxed">
+                                            {item.description.short}
+                                        </p>
+                                        <ul className="mt-3 space-y-2">
+                                        {item.description.long?.map((desc, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                                            
+                                            {/* custom bullet */}
+                                            <span className="mt-1 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span>
+                                            
+                                            {desc}
+                                            </li>
+                                        ))}
+                                        </ul>
+
+                                        <div className="flex gap-2 mt-3 flex-wrap">
+                                            {item.tech?.map((tech, i) => (
+                                            <span
+                                                key={i}
+                                                className="text-xs px-2 py-1 bg-white/10 rounded-md border border-white/20"
+                                            >
+                                                {tech}
+                                            </span>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
 
                                 {/* Hint */}

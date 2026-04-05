@@ -14,7 +14,7 @@ export const experienceData = {
           "Bi-daily progress report.",
         ],
       },
-      tech: ["Flutter", "Figma"],
+      tech: ["Flutter", "Dart", "Figma"],
     },
     {
       role: "Software Engineer Intern",
@@ -23,7 +23,22 @@ export const experienceData = {
       description: {
         short:
           "Performed manual and automation testing, regression, and reporting.",
+        long: [
+          "Introduced to Jira, Xray, and automation frameworks.",
+          "Performed manual and automation testing, regression, and reporting.",
+          "Demonstrated developed features to IT Product and Business User",
+        ],
       },
+      tech: [
+        "Jira",
+        "Confluence",
+        "Playwright",
+        "Appium",
+        "Javascript",
+        "Typescript",
+        "Excel",
+        "Share Point",
+      ],
     },
     {
       role: "Quality Assurance Contracted",
@@ -32,7 +47,25 @@ export const experienceData = {
       description: {
         short:
           "Standardized QA workflow, performed testing, and guiding new interns.",
+        long: [
+          "Standardized and presented QA framework to Software Engineers, IT Product, and Business User.",
+          "Performed testing on multiple applications and reported findings to developers.",
+          "Guided new interns on QA process and tools.",
+          "Utilize AI to enhance testing.",
+        ],
       },
+      tech: [
+        "Jira",
+        "Confluence",
+        "Playwright",
+        "Appium",
+        "Javascript",
+        "Typescript",
+        "Excel",
+        "Power Point",
+        "Share Point",
+        "Cline",
+      ],
     },
   ],
 };
