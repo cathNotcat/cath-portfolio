@@ -13,8 +13,8 @@ export const navbarData = {
       label: "Experience",
     },
     {
-      id: "portfolio",
-      label: "Portfolio",
+      id: "works",
+      label: "Works",
     },
     {
       id: "contact",
