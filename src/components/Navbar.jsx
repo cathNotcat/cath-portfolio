@@ -4,7 +4,7 @@ import { FiMenu, FiX } from 'react-icons/fi'
 
 const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const [activeId, setActiveId] = useState('hero')
+  const [activeId, setActiveId] = useState('about')
   const [pillStyle, setPillStyle] = useState({})
   const btnRefs = useRef([])
 
