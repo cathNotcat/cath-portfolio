@@ -6,7 +6,7 @@ export const worksData = {
       id: 1,
       title: "Architect Portfolio - Web",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        "Website showcasing architectural projects, built with React and hosted on Vercel. It features a clean design and responsive layout to highlight the portfolio effectively.",
       image: "/images/project1.png",
       tech: ["React"],
       liveUrl: "https://architecture-portfolio-sigma.vercel.app/",
@@ -16,7 +16,7 @@ export const worksData = {
       id: 2,
       title: "Gravity - Game",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        "A physics-based puzzle game where players manipulate gravity to navigate through challenging levels.",
       image: "/images/project2.png",
       tech: ["Unity", "C#"],
       liveUrl:
@@ -25,9 +25,9 @@ export const worksData = {
     },
     {
       id: 3,
-      title: "Project Three",
+      title: "Foodcano - Game",
       description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+        "A fun and quirky game where players control a food-themed volcano, erupting various dishes to satisfy hungry customers.",
       image: "/images/project3.png",
       tech: ["Unity", "C#"],
       liveUrl:
