@@ -3,7 +3,7 @@ export const experienceData = {
   subtitle: "Hands-on experience on companies.",
   experiences: [
     {
-      role: "Quality Assurance Contracted",
+      role: "Software Engineer - Quality Assurance",
       period: "August 2025 - Present",
       company: "PT HM Sampoerna Tbk",
       description: {
