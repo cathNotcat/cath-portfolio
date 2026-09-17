@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { educationData } from '../data/education'
+import { supabase } from "../lib/supabase";
 
 const Education = () => {
+  const [education, setEducation] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchEducation() {
+      const {data , error} = await supabase
+        .from("education")
+        .select("*")
+        .order("sort_order", { ascending: true });
+
+        if (error) {
+          console.error("Error fetching education:", error);
+        }
+        setEducation(data);
+        setLoading(false);
+    }
+    fetchEducation();
+  }, []);
+
+
   return (
     <section id="education" className="min-h-screen py-24 px-6 text-white">
       <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
@@ -15,7 +36,7 @@ const Education = () => {
         {/* Vertical Line */}
         <div className="absolute left-4 top-0 h-full w-[2px] bg-white/20"></div>
 
-        {educationData.educations.map((item, index) => (
+        {education.map((item, index) => (
           <div key={index} className="relative pl-12 mb-10">
             
             {/* Bullet */}
@@ -27,7 +48,7 @@ const Education = () => {
             {/* <div className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 hover:bg-white/20 transition"> */}
               <h3 className="font-semibold">{item.degree}</h3>
               <p className="text-sm text-gray-400">
-                {item.educator} · {item.duration}
+                {item.institution} · {item.duration}
               </p>
             </div>
 

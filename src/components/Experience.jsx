@@ -1,13 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { experienceData } from '../data/experience'
 import { FiChevronDown } from "react-icons/fi";
+import { supabase } from "../lib/supabase";
 
 const Experience = () => {
     const [activeIndex, setActiveIndex] = useState(null);
+    const [experiences, setExperiences] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchExperiences() {
+            const { data, error } = await supabase
+                .from("experiences")
+                .select("*")
+                .order("sort_order", { ascending: true });
+
+            if (error) {
+                console.error("Error fetching experiences:", error);
+            }
+            setExperiences(data);
+            setLoading(false);
+        }
+        fetchExperiences();
+    }, []);
+
+    if (loading) {
+        return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+    }
+
     return (
         <section id="experience" className="min-h-screen py-24 px-6 text-white">
             <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                 {experienceData.heading}
+
             </h2>
             <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
                 {experienceData.subtitle}
@@ -16,7 +41,7 @@ const Experience = () => {
             <div className="max-w-xl md:max-w-4xl mx-auto relative">
                 <div className="absolute left-4 top-0 h-full w-[2px] bg-white/20"></div>
 
-                {experienceData.experiences.map((item, index) => {
+                {experiences.map((item, index) => {
                     const isOpen = activeIndex === index;
                     return (
                         <div key={index} className="relative pl-12 mb-10">
@@ -52,10 +77,10 @@ const Experience = () => {
                                     >
                                     <div className="overflow-hidden">
                                         <p className="text-sm text-gray-300 leading-relaxed">
-                                            {item.description.short}
+                                            {item.short_description}
                                         </p>
                                         <ul className="mt-3 space-y-2">
-                                        {item.description.long?.map((desc, i) => (
+                                        {item.long_description?.map((desc, i) => (
                                             <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
                                             
                                             {/* custom bullet */}

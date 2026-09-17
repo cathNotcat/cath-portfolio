@@ -5,3 +5,10 @@ A modern glassmorphism portfolio built with React and Tailwind CSS, featuring in
 ## Live demo
 
 https://cath-portfolio-woad.vercel.app/
+
+## Documentation
+
+- [Installation and development guide](docs/installation.md)
+- [Supabase data import guide](docs/supabase-data-import.md)
+- [Database and content model](docs/database.md)
+- [Planned admin dashboard](docs/admin.md)
