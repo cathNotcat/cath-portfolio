@@ -4,7 +4,7 @@ import Background from './components/Background'
 import Hero from './components/Hero'
 import Education from './components/Education'
 import Experience from './components/Experience'
-import Works from './components/Works'
+import Projects from './components/Projects'
 import Contact from './components/Contact'
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
       <Hero />
       <Education />
       <Experience />
-      <Works />
+      <Projects />
       <Contact />
     </div>
 
