@@ -20,6 +20,27 @@ const Navbar = () => {
     const i = navbarData.menus.findIndex(m => m.id === activeId)
     const btn = btnRefs.current[i]
     if (btn) setPillStyle({ left: btn.offsetLeft, width: btn.offsetWidth })
+  }, [activeId])
+
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const marker = window.innerHeight * 0.35
+      const activeMenu = [...navbarData.menus].reverse().find(menu => {
+        const section = document.getElementById(menu.id)
+        return section && section.getBoundingClientRect().top <= marker
+      }) || navbarData.menus[0]
+
+      setActiveId(current => current === activeMenu.id ? current : activeMenu.id)
+    }
+
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
   }, [])
 
   return (
