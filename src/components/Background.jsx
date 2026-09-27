@@ -44,11 +44,6 @@ const Background = () => {
           right: -100 - scrollY * 0.1,
         }}
       />
-
-      {/* Noise */}
-      <div className="absolute inset-0 opacity-[0.04] mix-blend-overlay pointer-events-none">
-        <img src="/noise.png" className="w-full h-full object-cover" />
-      </div>
     </div>
   );
 };
