@@ -34,7 +34,7 @@ const Experience = () => {
 
                 headingResult.data.forEach((item) => {
                     headingData[item.key] = item.value;
-                });
+                }, []);
 
                 setHeading(headingData);
             }
@@ -44,20 +44,20 @@ const Experience = () => {
     });
 
     if (loading) {
-        return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+        return <div className="min-h-screen flex items-center justify-center theme-text">Loading...</div>
     }
 
     return (
-        <section id="experience" className="min-h-screen py-24 px-6 text-white">
+        <section id="experience" className="min-h-screen py-24 px-6 theme-text">
             <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                 {heading.experience_heading}
             </h2>
-            <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+            <p className="theme-muted text-sm md:text-base text-center mb-10 max-w-md mx-auto">
                 {heading.experience_subtitle}
             </p>
 
             <div className="max-w-xl md:max-w-4xl mx-auto relative">
-                <div className="absolute left-4 top-0 h-full w-[2px] bg-white/20"></div>
+                <div className="absolute left-4 top-0 h-full w-[2px] theme-divider"></div>
 
                 {experiences.map((item, index) => {
                     const isOpen = activeIndex === index;
@@ -69,20 +69,20 @@ const Experience = () => {
                                     absolute left-0 top-5 w-8 h-8 rounded-full backdrop-blur-md border transition
                                     ${isOpen
                                         ? "bg-blue-500/30 border-blue-400 shadow-[0_0_25px_rgba(78,153,207,0.6)]"
-                                        : "bg-white/20 border-white/30"}
+                                        : "theme-marker"}
                                 `}></div>
 
                             {/* Card */}
                             <div
                                 onClick={() => setActiveIndex(isOpen ? null : index)}
-                                className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 hover:bg-white/20 transition cursor-pointer">
-                                <p className=" text-[12px] text-gray-400">
+                                className="theme-surface theme-surface-hover backdrop-blur-md p-5 rounded-xl border transition cursor-pointer">
+                                <p className="text-[12px] theme-subtle">
                                     {item.period}
                                 </p>
                                 <h3 className="font-semibold">
                                     {item.role}
                                 </h3>
-                                <p className="text-sm text-gray-400">
+                                <p className="text-sm theme-subtle">
                                     {item.company}
                                 </p>
 
@@ -93,12 +93,12 @@ const Experience = () => {
                                         }`}
                                 >
                                     <div className="overflow-hidden">
-                                        <p className="text-sm text-gray-300 leading-relaxed">
+                                        <p className="text-sm theme-muted leading-relaxed">
                                             {item.short_description}
                                         </p>
                                         <ul className="mt-3 space-y-2">
                                             {item.long_description?.map((desc, i) => (
-                                                <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                                                <li key={i} className="flex items-start gap-2 text-sm theme-muted">
 
                                                     {/* custom bullet */}
                                                     <span className="mt-1 w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_8px_rgba(139,92,246,0.8)]"></span>
@@ -112,7 +112,7 @@ const Experience = () => {
                                             {item.tech?.map((tech, i) => (
                                                 <span
                                                     key={i}
-                                                    className="text-xs px-2 py-1 bg-white/10 rounded-md border border-white/20"
+                                                    className="text-xs px-2 py-1 theme-chip rounded-md border"
                                                 >
                                                     {tech}
                                                 </span>

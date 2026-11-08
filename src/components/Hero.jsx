@@ -31,11 +31,11 @@ const Hero = () => {
   }, []);
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+    return <div className="min-h-screen flex items-center justify-center theme-text">Loading...</div>
   }
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center text-center text-white">
+    <section id="about" className="min-h-screen flex items-center justify-center text-center theme-text">
       <div className="max-w-[75%]">
         <h2 className="text-xl md:text-2xl mb-2">
           {hero.hero_greeting}
@@ -48,25 +48,25 @@ const Hero = () => {
           </span>
         </h1>
 
-        <h3 className="text-md md:text-lg mt-4 text-gray-300">
+        <h3 className="text-md md:text-lg mt-4 theme-muted">
           {hero.hero_title}
         </h3>
 
         <div className="flex gap-6 justify-center mt-4">
           <a href="https://instagram.com/catherinerosalind" target="_blank">
-            <FaInstagram className="w-6 h-6 md:w-8 md:h-8  text-white/50 hover:text-pink-500 text-3xl transition" />
+            <FaInstagram className="w-6 h-6 md:w-8 md:h-8 theme-icon hover:text-pink-500 text-3xl transition" />
           </a>
 
           <a href="https://linkedin.com/in/catherinerosalind" target="_blank">
-            <FaLinkedin className="w-6 h-6 md:w-8 md:h-8 text-white/50 hover:text-blue-500 text-3xl transition" />
+            <FaLinkedin className="w-6 h-6 md:w-8 md:h-8 theme-icon hover:text-blue-500 text-3xl transition" />
           </a>
 
           <a href="mailto:your@email.com">
-            <FaEnvelope className="w-6 h-6 md:w-8 md:h-8 text-white/50 hover:text-red-400 text-3xl transition" />
+            <FaEnvelope className="w-6 h-6 md:w-8 md:h-8 theme-icon hover:text-red-400 text-3xl transition" />
           </a>
 
           <a href="https://github.com/cathNotcat" target="_blank">
-            <FaGithub className="w-6 h-6 md:w-8 md:h-8 text-white/50 hover:text-white text-3xl transition" />
+            <FaGithub className="w-6 h-6 md:w-8 md:h-8 theme-icon text-3xl transition" />
           </a>
         </div>
 

@@ -13,13 +13,13 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
       {/* Base */}
-      <div className="absolute inset-0 bg-[#0b0f1a]" />
+      <div className="absolute inset-0 ambient-base" />
 
       {/* Purple glow */}
       <div
-        className="absolute w-[700px] h-[700px] bg-purple-700/30 blur-[160px]"
+        className="absolute w-[700px] h-[700px] ambient-purple blur-[160px]"
         style={{
           top: -200 + scrollY * 0.2,
           left: "50%",
@@ -29,7 +29,7 @@ const Background = () => {
 
       {/* Blue glow */}
       <div
-        className="absolute w-[600px] h-[600px] bg-blue-600/20 blur-[140px]"
+        className="absolute w-[600px] h-[600px] ambient-blue blur-[140px]"
         style={{
           bottom: -150 - scrollY * 0.15,
           left: -150 + scrollY * 0.1,
@@ -38,10 +38,19 @@ const Background = () => {
 
       {/* Cyan glow */}
       <div
-        className="absolute w-[500px] h-[500px] bg-cyan-400/10 blur-[120px]"
+        className="absolute w-[500px] h-[500px] ambient-cyan blur-[120px]"
         style={{
           top: `calc(20% + ${scrollY * 0.1}px)`,
           right: -100 - scrollY * 0.1,
+        }}
+      />
+
+      {/* Green glow */}
+      <div
+        className="absolute w-[560px] h-[560px] ambient-green blur-[150px]"
+        style={{
+          bottom: -180 - scrollY * 0.08,
+          right: -180 + scrollY * 0.08,
         }}
       />
     </div>

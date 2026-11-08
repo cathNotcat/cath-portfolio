@@ -31,7 +31,7 @@ const Education = () => {
 
         headingResult.data.forEach((item) => {
           headingData[item.key] = item.value;
-        });
+        }, []);
 
         setHeading(headingData);
       }
@@ -41,32 +41,32 @@ const Education = () => {
   });
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+    return <div className="min-h-screen flex items-center justify-center theme-text">Loading...</div>
   }
 
   return (
-    <section id="education" className="min-h-screen py-24 px-6 text-white">
+    <section id="education" className="min-h-screen py-24 px-6 theme-text">
       <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
         {heading.education_heading}
       </h2>
-      <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+      <p className="theme-muted text-sm md:text-base text-center mb-10 max-w-md mx-auto">
         {heading.education_subtitle}
       </p>
 
       <div className="max-w-xl md:max-w-4xl mx-auto relative">
         {/* Vertical Line */}
-        <div className="absolute left-4 top-0 h-full w-[2px] bg-white/20"></div>
+        <div className="absolute left-4 top-0 h-full w-[2px] theme-divider"></div>
 
         {education.map((item, index) => (
           <div key={index} className="relative pl-12 mb-10">
 
             {/* Bullet */}
-            <div className="absolute left-0 top-6 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-[0_0_20px_rgba(168,85,247,0.4)]"></div>
+            <div className="absolute left-0 top-6 w-8 h-8 rounded-full theme-marker backdrop-blur-md border shadow-[0_0_20px_rgba(168,85,247,0.25)]"></div>
 
             {/* Card */}
-            <div className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20">
+            <div className="theme-surface backdrop-blur-md p-5 rounded-xl border">
               <h3 className="font-semibold">{item.degree}</h3>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm theme-subtle">
                 {item.institution} · {item.duration}
               </p>
             </div>

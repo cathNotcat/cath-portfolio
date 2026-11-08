@@ -8,7 +8,6 @@ const Projects = () => {
     const [heading, setHeading] = useState({});
     const [loading, setLoading] = useState(true);
 
-
     useEffect(() => {
         async function fetchContent() {
             const [projectResult, headingResult] = await Promise.all([
@@ -34,7 +33,7 @@ const Projects = () => {
 
                 headingResult.data.forEach((item) => {
                     headingData[item.key] = item.value;
-                });
+                }, []);
 
                 setHeading(headingData);
             }
@@ -44,25 +43,31 @@ const Projects = () => {
     });
 
     if (loading) {
-        return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+        return <div className="min-h-screen flex items-center justify-center theme-text">Loading...</div>
     }
 
     return (
-        <section id="works" className="min-h-screen py-24 px-6 text-white">
+        <section id="works" className="min-h-screen py-24 px-6 theme-text">
             <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
                 {heading.project_heading}
             </h2>
-            <p className="text-gray-300 text-sm md:text-base text-center mb-10 max-w-md mx-auto">
+            <p className="theme-muted text-sm md:text-base text-center mb-10 max-w-md mx-auto">
                 {heading.project_subtitle}
             </p>
             <div className="max-w-xl md:max-w-4xl mx-auto relative">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project) => (
                         // Cards
-                        <div key={project.id} className="bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 ">
-                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="block aspect-video overflow-hidden rounded-lg mb-4 bg-white/5">
+                        <div key={project.id} className="theme-surface backdrop-blur-md p-5 rounded-xl border flex flex-col h-full">
+                            <a href={project.live_url} target="_blank" rel="noopener noreferrer" className="block aspect-video overflow-hidden rounded-lg mb-4 theme-chip">
                                 <img
-                                    src={project.image_url}
+                                    src={
+                                        project.image_url
+                                            ? supabase.storage
+                                                .from("portfolio-images")
+                                                .getPublicUrl(project.image_url).data.publicUrl
+                                            : "/placeholder.png"
+                                    }
                                     alt={project.title}
                                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
                                 />
@@ -70,29 +75,29 @@ const Projects = () => {
                             <h3 className="font-semibold text-lg mb-2">
                                 {project.title}
                             </h3>
-                            <p className="text-sm text-gray-300 mb-4">
+                            <p className="text-sm theme-muted mb-4">
                                 {project.description}
                             </p>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {project.tech.map((techItem, i) => (
                                     <span
                                         key={i}
-                                        className="text-xs px-2 py-1 bg-white/10 rounded-md border border-white/20"
+                                        className="text-xs px-2 py-1 theme-chip rounded-md border"
                                     >
                                         {techItem}
                                     </span>
                                 ))}
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="mt-auto flex items-center gap-2">
                                 <a
-                                    href={project.liveUrl}
-                                    className="px-4 py-2 rounded-md hover:bg-white/20 transition"
+                                    href={project.live_url}
+                                    className="px-4 py-2 rounded-md theme-surface-hover transition"
                                 >
                                     <FaArrowUpRightFromSquare className="w-4 h-4" />
                                 </a>
-                                {project.githubUrl && (
-                                    <a href={project.githubUrl}
-                                        className="px-4 py-2 rounded-md hover:bg-white/20 transition">
+                                {project.github_url && (
+                                    <a href={project.github_url}
+                                        className="px-4 py-2 rounded-md theme-surface-hover transition">
                                         <FaGithub />
                                     </a>
                                 )}

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { contactData } from "../data/contact";
 import { FaEnvelope, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { supabase } from "../lib/supabase";
 
@@ -13,7 +12,7 @@ const iconMap = {
 const hoverMap = {
   email: "hover:border-red-400/50 hover:text-red-400",
   linkedin: "hover:border-blue-400/50 hover:text-blue-400",
-  github: "hover:border-white/50 hover:text-white",
+  github: "social-link-github",
   instagram: "hover:border-pink-400/50 hover:text-pink-400",
 };
 
@@ -47,7 +46,7 @@ const Contact = () => {
 
         headingResult.data.forEach((item) => {
           headingData[item.key] = item.value;
-        });
+        }, []);
 
         setHeading(headingData);
       }
@@ -57,18 +56,18 @@ const Contact = () => {
   });
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center text-white">Loading...</div>
+    return <div className="min-h-screen flex items-center justify-center theme-text">Loading...</div>
   }
 
   return (
     <section
       id="contact"
-      className="min-h-screen py-24 px-6 text-white flex flex-col items-center justify-center"
+      className="min-h-screen py-24 px-6 theme-text flex flex-col items-center justify-center"
     >
       <h2 className="text-2xl md:text-4xl font-bold mb-4 text-center">
         {heading.contact_heading}
       </h2>
-      <p className="text-gray-300 text-sm md:text-base text-center mb-12 max-w-md">
+      <p className="theme-muted text-sm md:text-base text-center mb-12 max-w-md">
         {heading.contact_subtitle}
       </p>
 
@@ -79,13 +78,13 @@ const Contact = () => {
             href={item.href}
             target={item.icon_key !== "email" ? "_blank" : undefined}
             rel="noopener noreferrer"
-            className={`flex items-center gap-4 bg-white/10 backdrop-blur-md p-5 rounded-xl border border-white/20 text-white/70 transition-all duration-300 ${hoverMap[item.icon]}`}
+            className={`theme-surface theme-link-card flex items-center gap-4 backdrop-blur-md p-5 rounded-xl border transition-all duration-300 ${hoverMap[item.icon_key] || ""}`}
           >
-            <div className="p-3 bg-white/10 rounded-lg">
+            <div className="p-3 theme-chip rounded-lg">
               {iconMap[item.icon_key]}
             </div>
             <div>
-              <p className="text-xs text-gray-400 mb-0.5">{item.label}</p>
+              <p className="text-xs theme-subtle mb-0.5">{item.label}</p>
               <p className="text-sm font-medium">{item.value}</p>
             </div>
           </a>
